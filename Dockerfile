@@ -1,4 +1,11 @@
-FROM nginx
+FROM nginx:latest
+
+# Remove default nginx content
+RUN rm -rf /usr/share/nginx/html/*
+
+# Copy your website files
 COPY . /usr/share/nginx/html
-EXPOSE 8000
-CMD ["nginx","-g","daemon off;"]
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
